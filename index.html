@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIPAMO | Vêtements homme, femme et enfant au Cameroun</title>
+    <meta name="description" content="Découvrez les Collections SIPAMO à Yaoundé, Cameroun : chemises, ensembles, robes et accessoires pour homme, femme et enfant. La qualité à petit prix.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.sipamo.site/">
+
+    <!-- Open Graph (partage réseaux sociaux) -->
+    <meta property="og:title" content="SIPAMO | Vêtements élégants au Cameroun">
+    <meta property="og:description" content="Chemises, ensembles, robes et accessoires pour homme, femme et enfant. La qualité à petit prix à Yaoundé.">
+    <meta property="og:url" content="https://www.sipamo.site/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sipamo.site/images/logo.png">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ClothingStore",
+      "name": "SIPAMO",
+      "url": "https://www.sipamo.site",
+      "logo": "https://www.sipamo.site/images/logo.png",
+      "description": "Vêtements homme, femme et enfant à Yaoundé, Cameroun. Chemises, ensembles, robes et accessoires.",
+      "sameAs": [
+        "https://www.facebook.com/societe.sipamo",
+        "https://www.linkedin.com/in/sipamo-sarl-0225383b1",
+        "https://x.com/SIPAMOsarl",
+        "https://www.tiktok.com/@sipamo.sarl",
+        "https://www.instagram.com/sipamosarl",
+        "https://wa.me/c/237620412921"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Yaoundé",
+        "addressCountry": "CM"
+      }
+    }
+    </script>
+</head>
+<body>
+
+<header>
+    <button class="icon-btn toggle-menu" aria-label="Ouvrir le menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
+    <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">SIPAMO</div>
+
+    <button class="icon-btn toggle-cart" aria-label="Voir le panier" style="position:relative">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span id="cart-badge">0</span>
+    </button>
+</header>
+
+<!-- Bannière hero -->
+<div class="hero-bands-container">
+    <div class="hero-band" id="band-0"><div class="layer layer-a"></div><div class="layer layer-b"></div></div>
+    <div class="hero-band" id="band-1"><div class="layer layer-a"></div><div class="layer layer-b"></div></div>
+    <div class="hero-band" id="band-2"><div class="layer layer-a"></div><div class="layer layer-b"></div></div>
+    <div class="hero-band" id="band-3"><div class="layer layer-a"></div><div class="layer layer-b"></div></div>
+    <div class="hero-band" id="band-4"><div class="layer layer-a"></div><div class="layer layer-b"></div></div>
+    <div class="hero-overlay">
+        <h1 class="hero-slogan">la qualité à petit prix</h1>
+    </div>
+</div>
+
+<!-- Section Nouveautés -->
+<section class="container" style="margin-bottom: 80px;">
+    <h2 class="section-title" style="text-align: center; margin-bottom: 40px; font-weight: 400; text-transform: uppercase; letter-spacing: 2px;">Nouveautés</h2>
+    <div class="product-grid" id="new-arrivals-grid"></div>
+    <div style="text-align: center; margin-top: 50px;">
+        <a href="produits.html?cat=all" style="text-decoration: none; border-bottom: 1px solid #000; padding-bottom: 5px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #000;">Tout voir</a>
+    </div>
+</section>
+
+<!-- Réseaux sociaux (bulles mises à jour) -->
+<div class="social-bubbles">
+    <a href="https://www.facebook.com/societe.sipamo" class="bubble" target="_blank" rel="noopener" aria-label="Facebook SIPAMO"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.linkedin.com/in/sipamo-sarl-0225383b1" class="bubble" target="_blank" rel="noopener" aria-label="LinkedIn SIPAMO"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://x.com/SIPAMOsarl" class="bubble" target="_blank" rel="noopener" aria-label="X (Twitter) SIPAMO"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://www.tiktok.com/@sipamo.sarl" class="bubble" target="_blank" rel="noopener" aria-label="TikTok SIPAMO"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/sipamosarl" class="bubble" target="_blank" rel="noopener" aria-label="Instagram SIPAMO"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/c/237620412921" class="bubble" target="_blank" rel="noopener" aria-label="WhatsApp SIPAMO"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<footer style="text-align: center; padding: 40px 20px; border-top: 1px solid #eee;">
+    <p>
+        &copy; 2026 SIPAMO.
+        <a href="en-savoir-plus.html#legal" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s;">Tous droits réservés.</a><br>
+        <a href="mentions-legales/mentions-legales.html" style="color: #999; text-decoration: none;">Mentions Légales</a>
+    </p>
+    <style>footer a:hover { border-bottom-color: #000 !important; }</style>
+</footer>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Menu Latéral (Gauche) -->
+<div class="drawer drawer-left" id="menu-drawer">
+    <button class="close-drawer toggle-menu" aria-label="Fermer le menu">&times;</button>
+
+    <ul class="nav-list">
+        <li class="nav-item"><a href="index.html" style="text-decoration:none; color:inherit;">Accueil</a></li>
+
+        <!-- HOMME -->
+        <li class="nav-item" onclick="toggleSubMenu(this)">
+            <span>Homme</span><span class="nav-arrow">+</span>
+        </li>
+        <div class="sub-menu">
+            <div class="nav-item-sub" onclick="toggleSubMenu2(this)">
+                <span>Chemises</span><span class="nav-arrow-sub">+</span>
+            </div>
+            <div class="sub-menu-2">
+                <a href="produits.html?cat=homme&sub=chemises&type=chemise-longues-manches" class="sub-link">Longues manches</a>
+                <a href="produits.html?cat=homme&sub=chemises&type=chemise-courtes-manches" class="sub-link">Courtes manches</a>
+            </div>
+            <div class="nav-item-sub" onclick="toggleSubMenu2(this)">
+                <span>Ensembles</span><span class="nav-arrow-sub">+</span>
+            </div>
+            <div class="sub-menu-2">
+                <a href="produits.html?cat=homme&sub=ensembles&type=pantalon-courtes-manches" class="sub-link">Pantalon, chms courtes manches</a>
+                <a href="produits.html?cat=homme&sub=ensembles&type=pantalon-longues-manches" class="sub-link">Pantalon, chms longues manches</a>
+                <a href="produits.html?cat=homme&sub=ensembles&type=culotte-courtes-manches" class="sub-link">Culotte &amp; short courtes manches</a>
+                <a href="produits.html?cat=homme&sub=ensembles&type=tuniques" class="sub-link">Tuniques</a>
+            </div>
+            
+            <a href="produits.html?cat=homme&sub=pantalons" class="sub-link nav-item-sub"><span>Pantalon, bermuda et short</span></a>     
+        
+        </div>
+
+        <!-- FEMME -->
+        <li class="nav-item" onclick="toggleSubMenu(this)">
+            <span>Femme</span><span class="nav-arrow">+</span>
+        </li>
+        <div class="sub-menu">
+            <a href="produits.html?cat=femme&sub=chemises" class="sub-link nav-item-sub"><span>Chemise dame</span></a>
+            <a href="produits.html?cat=femme&sub=jupes-tailleur" class="sub-link nav-item-sub"><span>Jupe tailleur</span></a>
+            <a href="produits.html?cat=femme&sub=pantalons" class="sub-link nav-item-sub"><span>Pantalon</span></a>
+            <a href="produits.html?cat=femme&sub=robes" class="sub-link nav-item-sub"><span>Robes</span></a>
+        </div>
+
+        <!-- ENFANT -->
+        <li class="nav-item" onclick="toggleSubMenu(this)">
+            <span>Enfant</span><span class="nav-arrow">+</span>
+        </li>
+        <div class="sub-menu">
+            <a href="produits.html?cat=enfant&sub=garcon" class="sub-link nav-item-sub"><span>Garçon</span></a>
+            <a href="produits.html?cat=enfant&sub=fille" class="sub-link nav-item-sub"><span>Fille</span></a>
+        </div>
+
+        <!-- ACCESSOIRES -->
+        <li class="nav-item" onclick="toggleSubMenu(this)">
+            <span>Accessoires</span><span class="nav-arrow">+</span>
+        </li>
+        <div class="sub-menu">
+            <a href="produits.html?cat=accessoire&sub=chapeaux" class="sub-link nav-item-sub"><span>Chapeau</span></a>
+            <a href="produits.html?cat=accessoire&sub=ceintures" class="sub-link nav-item-sub"><span>Ceinture</span></a>
+        </div>
+
+        <!-- AUTRES -->
+        <li class="nav-item"><a href="produits.html?cat=all" style="text-decoration:none; color:inherit;">Tous les produits</a></li>
+        <li class="nav-item"><a href="contact.html" style="text-decoration:none; color:inherit;">Contact</a></li>
+        <li class="nav-item"><a href="en-savoir-plus.html" style="text-decoration:none; color:inherit;">En savoir plus</a></li>
+    </ul>
+</div>
+
+<!-- Panier Latéral (Droite) -->
+<div class="drawer drawer-right" id="cart-drawer">
+    <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:20px; border-bottom:1px solid #eee;">
+        <span style="letter-spacing:2px; font-size:12px; font-weight:500;">VOTRE PANIER |<a href="en-savoir-plus.html#conditions" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s;"> Conditions </a></span>
+        <button class="toggle-cart" style="background:none; border:none; font-size:28px; cursor: pointer;">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items-container" style="flex-grow:1; overflow-y:auto; padding: 20px 0;"></div>
+    <div style="border-top:1px solid #eee; padding-top:20px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px; font-weight:500;">
+            <span>TOTAL ESTIMÉ</span>
+            <span id="cart-total">0 FCFA</span>
+        </div>
+        <button onclick="window.location.href='panier.html'" class="checkout-btn" style="width:100%; background:#000; color:#fff; border:none; padding:18px; text-transform:uppercase; cursor:pointer; letter-spacing:1px;">
+            Finaliser la commande
+        </button>
+    </div>
+</div>
+
+<script src="produits.js"></script>
+<script src="script-unified.js"></script>
+   
+<script>
+document.addEventListener('DOMContentLoaded', function initHeroBands() {
+    const allImages = (typeof products !== 'undefined' && products.length > 0)
+        ? products.flatMap(p => p.images)
+        : ['images/default.jpg'];
+
+    allImages.sort(() => Math.random() - 0.5);
+    const getRandomImage = () => allImages[Math.floor(Math.random() * allImages.length)];
+
+    const bands = [0, 1, 2, 3, 4].map(i => document.getElementById(`band-${i}`));
+
+    bands.forEach(band => {
+        if (!band) return;
+        const layerA = band.querySelector('.layer-a');
+        const layerB = band.querySelector('.layer-b');
+        layerA.style.backgroundImage = `url('${getRandomImage()}')`;
+        layerA.classList.add('active');
+        layerB.classList.remove('active');
+    });
+
+    function updateBand(bandIndex) {
+        const band = bands[bandIndex];
+        if (!band) return;
+        const layerA = band.querySelector('.layer-a');
+        const layerB = band.querySelector('.layer-b');
+        const activeLayer = layerA.classList.contains('active') ? layerA : layerB;
+        const nextLayer   = layerA.classList.contains('active') ? layerB : layerA;
+        const newImage = getRandomImage();
+        const imgLoader = new Image();
+        imgLoader.src = newImage;
+        imgLoader.onload = () => {
+            nextLayer.style.backgroundImage = `url('${newImage}')`;
+            activeLayer.classList.remove('active');
+            nextLayer.classList.add('active');
+        };
+    }
+
+    const timings = [4000, 6500, 5200, 7800, 4500];
+    timings.forEach((time, index) => {
+        setTimeout(() => {
+            updateBand(index);
+            setInterval(() => updateBand(index), time);
+        }, Math.random() * 2000);
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIPAMO | Panier & Paiement</title>
+    <meta name="description" content="Finalisez votre commande SIPAMO. Récapitulatif, informations de livraison et validation de votre achat en ligne.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.sipamo.site/panier.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="SIPAMO | Votre Panier">
+    <meta property="og:description" content="Validez votre commande SIPAMO et soyez livré à Yaoundé.">
+    <meta property="og:url" content="https://www.sipamo.site/panier.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sipamo.site/favicon-512.png">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">    
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        /* Styles pour les sélecteurs */
+        select.input-field {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 18px;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        select.input-field:hover {
+            border-color: #d4a017;
+        }
+
+        select.input-field:focus {
+            outline: none;
+            border-color: #d4a017;
+            box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.1);
+        }
+
+        /* Champ quartier caché par défaut */
+        #yaonde-quartier-group {
+            display: none;
+        }
+
+        #yaonde-quartier-group.show {
+            display: block;
+        }
+
+        /* Champ rue caché par défaut */
+        #yaonde-street-group {
+            display: none;
+        }
+
+        #yaonde-street-group.show {
+            display: block;
+        }
+
+        /* Affichage des frais de livraison */
+        .delivery-fee-row {
+            background: #fff8e1;
+            border-left: 3px solid #d4a017;
+            padding-left: 10px;
+        }
+
+        .delivery-fee-row span:last-child {
+            color: #d4a017;
+            font-weight: 600;
+        }
+
+        /* Gratuit indicator */
+        .free-delivery {
+            color: #4caf50;
+            font-weight: 600;
+        }
+
+        /* Validation quartier */
+        #c-quartier.valid {
+            border-color: #4caf50 !important;
+            background-color: #f1f8f4;
+        }
+
+        #c-quartier.invalid {
+            border-color: #f44336 !important;
+            background-color: #fef5f5;
+        }
+
+        /* Zone badge */
+        .zone-badge {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        .zone-price {
+            display: inline-block;
+            background: #fff8e1;
+            color: #d4a017;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .zone-error {
+            color: #f44336;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <button class="icon-btn toggle-menu" aria-label="Ouvrir le menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+    
+    <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">SIPAMO</div>
+    
+    <button class="icon-btn" style="opacity: 0.3; cursor: default;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+    </button>
+</header>
+
+<div class="cart-wrapper">
+    
+    <div class="print-header-only">
+        <div class="print-logo">SIPAMO</div>
+        <div class="print-row">
+            <div class="company-details">
+                <strong>SIPAMO SARL</strong><br>
+                Yaoundé, CAMEROUN<br>
+                Tél: (+237) 620 41 29 21<br>
+                Email: <a href="/cdn-cgi/l/email-protection#3a5955544e5b594e7a49534a5b57551449534e5f"><span class="__cf_email__" data-cfemail="22414d4c5643415662514b52434f4d0c514b5647">[email&#160;protected]</span></a>
+            </div>
+            <div class="invoice-details">
+                <strong>BON DE COMMANDE / PROFORMA</strong><br>
+                Date: <span id="print-date"></span><br>
+                Réf: <span id="order-ref"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1 class="page-title">Votre Panier</h1>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <span class="order-date" id="screen-date"></span>
+            <button class="btn-clear-cart" onclick="clearCart()" style="background: none; border: 1px solid #ccc; border-radius: 4px; padding: 6px 12px; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                <i class="fas fa-trash-alt"></i> Vider le panier
+            </button>
+        </div>
+    </div>
+
+    <div id="empty-msg" style="display:none;">
+        <p>Votre panier est vide.</p>
+        <a href="produits.html?cat=all" class="btn-continue">Découvrir la collection</a>
+    </div>
+
+    <div id="cart-content-area">
+        
+        <div class="form-section">
+            <div class="section-title">1. Informations Client</div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Nom Complet *</label>
+                    <input type="text" id="c-name" class="input-field" placeholder="Votre nom" required>
+                </div>
+                <div class="input-group">
+                    <label>Téléphone (WhatsApp pour la Livraison) *</label>
+                    <input type="tel" id="c-tel" class="input-field" placeholder="6XX XXX XXX" required>
+                </div>
+                <div class="input-group">
+                    <label>Email *</label>
+                    <input type="email" id="c-email" class="input-field" placeholder="votre-email@gmail.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Ville de Livraison *</label>
+                    <select id="c-city" class="input-field" required onchange="handleCityChange()">
+                        <option value="">-- Sélectionnez une ville --</option>
+                        <option value="Yaoundé">Yaoundé</option>
+                        <option value="Edéa">Edéa</option>
+                        <option value="Obala">Obala</option>
+                        <option value="Mbalmayo">Mbalmayo</option>
+                        <option value="Akonolinga">Akonolinga</option>
+                        <option value="Eséka">Eséka</option>
+                        <option value="Douala">Douala</option>
+                        <option value="Ebolowa">Ebolowa</option>
+                        <option value="Sangmélima">Sangmélima</option>
+                        <option value="Bafoussam">Bafoussam</option>
+                        <option value="Bangangté">Bangangté</option>
+                        <option value="Foumban">Foumban</option>
+                        <option value="Dschang">Dschang</option>
+                        <option value="Kribi">Kribi</option>
+                        <option value="Bertoua">Bertoua</option>
+                        <option value="Nkongsamba">Nkongsamba</option>
+                        <option value="Melong">Melong</option>
+                        <option value="Manjo">Manjo</option>
+                        <option value="Penja">Penja</option>
+                        <option value="Mbanga">Mbanga</option>
+                        <option value="Buea">Buea</option>
+                        <option value="Limbe">Limbe</option>
+                        <option value="Tiko">Tiko</option>
+                        <option value="Kumba">Kumba</option>
+                        <option value="Muyuka">Muyuka</option>
+                        <option value="Bamenda">Bamenda</option>
+                        <option value="Ngaoundéré">Ngaoundéré</option>
+                        <option value="Meiganga">Meiganga</option>
+                        <option value="Ambam">Ambam</option>
+                        <option value="Lolodorf">Lolodorf</option>
+                        <option value="Garoua">Garoua</option>
+                        <option value="Maroua">Maroua</option>
+                        <option value="Guider">Guider</option>
+                        <option value="Kaélé">Kaélé</option>
+                        <option value="Yagoua">Yagoua</option>
+                        <option value="Mora">Mora</option>
+                        <option value="Batouri">Batouri</option>
+                        <option value="Tibati">Tibati</option>
+                        <option value="Banyo">Banyo</option>
+                        <option value="Tignère">Tignère</option>
+                        <option value="Poli">Poli</option>
+                        <option value="Wum">Wum</option>
+                        <option value="Mamfe">Mamfe</option>
+                        <option value="Fontem">Fontem</option>
+                        <option value="Fundong">Fundong</option>
+                        <option value="Nkambe">Nkambe</option>
+                        <option value="Mokolo">Mokolo</option>
+                        <option value="Kousséri">Kousséri</option>
+                        <option value="Idenau">Idenau</option>
+                        <option value="Campo">Campo</option>
+                        <option value="Mintom">Mintom</option>
+                    </select>
+                </div>
+
+                <!-- QUARTIER YAOUNDÉ - CACHÉ PAR DÉFAUT -->
+                <div class="input-group" id="yaonde-quartier-group">
+                    <label>Quartier à Yaoundé *</label>
+                    <input type="text" id="c-quartier" class="input-field" list="quartiers-list" placeholder="Tapez ou sélectionnez votre quartier">
+                    <datalist id="quartiers-list"></datalist>
+                    <div id="zone-display" style="display:none; margin-top:8px; padding:8px; border-radius:4px; font-size:12px;">
+                    </div>
+                    <small style="color:#999; margin-top:5px; display:block;">
+                        Tapez le nom de votre quartier. Le système détectera automatiquement votre zone et le tarif.
+                    </small>
+                </div>
+
+                <!-- Option de retrait (juste après le champ quartier) -->
+                <div class="input-group" id="delivery-mode-group">
+                    <label>Mode de réception *</label>
+                    <div style="display: flex; gap: 20px; margin-top: 10px;">
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="radio" name="deliveryMode" value="delivery" checked> Livraison à domicile
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="radio" name="deliveryMode" value="pickup"> Retrait gratuit à Total Melen (Yaoundé)
+                        </label>
+                    </div>
+                    <small style="display: block; margin-top: 8px; color: #666;">En choisissant le retrait, vous venez chercher votre commande à l'adresse qui vous sera communiquée après confirmation. (Boutique exclusivement en ligne)</small>
+                </div>
+
+                <!-- Bloc d'information dynamique -->
+                <div id="delivery-conditions" style="background: #fff8e1; padding: 12px; border-radius: 4px; margin-top: 20px; font-size: 12px;"></div>
+
+                <!-- Rue / Lieu-dit (visible seulement pour Yaoundé) -->
+                <div class="input-group" id="yaonde-street-group">
+                    <label>Rue / Lieu-dit *</label>
+                    <input type="text" id="c-street" class="input-field" placeholder="Ex: Rue 12, Quartier Ngoa-Ekellé, etc.">
+                </div>
+
+                <div class="input-group">
+                    <label id="c-delivery-time-label">Heure de Livraison (Plage : 7h - 18h) *</label>
+                    <select id="c-delivery-time" class="input-field" required>
+                        <option value="">-- Sélectionnez une heure --</option>
+                        <option value="07:00">7:00 - 8:00</option>
+                        <option value="08:00">8:00 - 9:00</option>
+                        <option value="09:00">9:00 - 10:00</option>
+                        <option value="10:00">10:00 - 11:00</option>
+                        <option value="11:00">11:00 - 12:00</option>
+                        <option value="12:00">12:00 - 13:00</option>
+                        <option value="13:00">13:00 - 14:00</option>
+                        <option value="14:00">14:00 - 15:00</option>
+                        <option value="15:00">15:00 - 16:00</option>
+                        <option value="16:00">16:00 - 17:00</option>
+                        <option value="17:00">17:00 - 18:00</option>
+                    </select>
+                </div>
+
+                <div class="input-group" id="delivery-date-group">
+                    <label id="c-delivery-date-label">Date de Livraison *</label>
+                    <input type="date" id="c-delivery-date" class="input-field" required disabled
+                           style="background:#f5f5f5; cursor:not-allowed; color:#aaa;"
+                           title="Choisissez d'abord une heure">
+                    <small id="c-delivery-date-hint" style="display:block; margin-top:5px; color:#999; font-style:italic;">
+                        &#9203; Sélectionnez d'abord une heure pour voir la date disponible.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">2. Récapitulatif de commande</div>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th class="text-center">Qté</th>
+                    <th class="text-right">Prix Unit.</th>
+                    <th class="text-right">Total brut</th>
+                    <th class="text-right">Prix réduit</th>
+                    <th class="action-col"></th>
+                </tr>
+            </thead>
+            <tbody id="cart-tbody"></tbody>
+        </table>
+
+        <div class="total-section">
+            <div id="promo-hint" style="font-size:12px; color:#d4a017; margin-bottom:15px; display:none;"></div>
+            <div class="total-row">
+                <span>Total brut :</span>
+                <span id="total-brut">0 FCFA</span>
+            </div>
+            <div class="total-row">
+                <span>Remise :</span>
+                <span id="total-remise">0 FCFA</span>
+            </div>
+            <div class="total-row delivery-fee-row">
+                <span>Frais de livraison :</span>
+                <span id="delivery-fee">0 FCFA</span>
+            </div>
+            <div class="total-row total-net">
+                <span>Net à payer :</span>
+                <span id="grand-total">0 FCFA</span>
+            </div>
+        </div>
+
+        <div class="print-footer">
+            <p>Ce document est valable 15 jours. Merci de votre confiance.</p>
+        </div>
+
+        <div class="actions-footer">
+            <button class="btn-action btn-capture" onclick="captureOrder()">
+                <i class="fas fa-camera"></i> Capturer la commande
+            </button>
+            <button class="btn-action btn-order" onclick="processOrder()">
+                Valider la commande <i class="fas fa-arrow-right" style="margin-left:10px;"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Menu Latéral (Gauche) -->
+<div class="drawer drawer-left" id="menu-drawer">
+    <button class="close-drawer toggle-menu" aria-label="Fermer le menu">&times;</button>
+
+    <ul class="nav-list">
+        <li class="nav-item"><a href="index.html" style="text-decoration:none; color:inherit;">Accueil</a></li>
+
+        <!-- HOMME -->
+        <li class="nav-item" onclick="toggleSubMenu(this)">
+            <span>Homme</span><span class="nav-arrow">+</span>
+        </li>
+        <div class="sub-menu">
+            <div class="nav-item-sub" onclick="toggleSubMenu2(this)">
+                <span>Chemises</span><span class="nav-arrow-sub">+</span>
+            </div>
+            <div class="sub-menu-2">
+                <a href="produits.html?cat=homme&sub=chemises&type=chemise-longues-manches" class="sub-link">Longues manches</a>
+                <a href="produits.html?cat=homme&sub=chemises&type=chemise-courtes-manches" class="sub-link">Courtes manches</a>
+            </div>
+            <div class="nav-item-sub" onclick="toggleSubMenu2(this)">
+                <span>Ensembles</span><span class="nav-arrow-sub">+</span>
+            </div>
+            <div class="sub-menu-2">
+                <a href="produits.html?cat=homme&sub=ensembles&type=pantalon-courtes-manches" class="sub-link">Pantalon, chms courtes manches</a>
+                <a href="produits.html?cat=homme&sub=ensembles&type=pantalon-longues-manches" class="sub-link">Pantalon, chms longues manches</a>
+                <a href="produits.html?cat=homme&sub=ensembles&type=culotte-courtes-manches" class="sub-link">Culotte &amp; short courtes manches</a>
+                <a href="produits.html?cat=homme&sub=ensembles&type=tuniques" class="sub-link">Tuniques</a>
+            </div>
+           
+            <a href="produits.html?cat=homme&sub=pantalons" class="sub-link nav-item-sub"><span>Pantalon, bermuda et short</span></a>     
+        </div>
+
+        <!-- FEMME -->
+        <li class="nav-item" onclick="toggleSubMenu(this)">
+            <span>Femme</span><span class="nav-arrow">+</span>
+        </li>
+        <div class="sub-menu">
+            <a href="produits.html?cat=femme&sub=chemises" class="sub-link nav-item-sub"><span>Chemise dame</span></a>
+            <a href="produits.html?cat=femme&sub=jupes-tailleur" class="sub-link nav-item-sub"><span>Jupe tailleur</span></a>
+            <a href="produits.html?cat=femme&sub=pantalons" class="sub-link nav-item-sub"><span>Pantalon</span></a>
+            <a href="produits.html?cat=femme&sub=robes" class="sub-link nav-item-sub"><span>Robes</span></a>
+        </div>
+
+        <!-- ENFANT -->
+        <li class="nav-item" onclick="toggleSubMenu(this)">
+            <span>Enfant</span><span class="nav-arrow">+</span>
+        </li>
+        <div class="sub-menu">
+            <a href="produits.html?cat=enfant&sub=garcon" class="sub-link nav-item-sub"><span>Garçon</span></a>
+            <a href="produits.html?cat=enfant&sub=fille" class="sub-link nav-item-sub"><span>Fille</span></a>
+        </div>
+
+        <!-- ACCESSOIRES -->
+        <li class="nav-item" onclick="toggleSubMenu(this)">
+            <span>Accessoires</span><span class="nav-arrow">+</span>
+        </li>
+        <div class="sub-menu">
+            <a href="produits.html?cat=accessoire&sub=chapeaux" class="sub-link nav-item-sub"><span>Chapeau</span></a>
+            <a href="produits.html?cat=accessoire&sub=ceintures" class="sub-link nav-item-sub"><span>Ceinture</span></a>
+        </div>
+
+        <!-- AUTRES -->
+        <li class="nav-item"><a href="produits.html?cat=all" style="text-decoration:none; color:inherit;">Tous les produits</a></li>
+        <li class="nav-item"><a href="contact.html" style="text-decoration:none; color:inherit;">Contact</a></li>
+        <li class="nav-item"><a href="en-savoir-plus.html" style="text-decoration:none; color:inherit;">En savoir plus</a></li>
+    </ul>
+</div>
+
+<!-- Panier Latéral (Droite) -->
+<div class="drawer drawer-right" id="cart-drawer">
+    <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:20px; border-bottom:1px solid #eee;">
+        <span style="letter-spacing:2px; font-size:12px; font-weight:500;">VOTRE PANIER |<a href="en-savoir-plus.html#conditions" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s;"> Conditions </a></span>
+        <button class="toggle-cart" style="background:none; border:none; font-size:28px; cursor: pointer;">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items-container" style="flex-grow:1; overflow-y:auto; padding: 20px 0;"></div>
+    <div style="border-top:1px solid #eee; padding-top:20px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px; font-weight:500;">
+            <span>TOTAL ESTIMÉ</span>
+            <span id="cart-total">0 FCFA</span>
+        </div>
+        <button onclick="window.location.href='panier.html'" class="checkout-btn" style="width:100%; background:#000; color:#fff; border:none; padding:18px; text-transform:uppercase; cursor:pointer; letter-spacing:1px;">
+            Ok 
+        </button>
+    </div>
+</div>
+<script src="delivery-system.js"></script>
+<script src="script-unified.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const datalist = document.getElementById('quartiers-list');
+    if (!datalist || typeof YAONDE_QUARTIERS === 'undefined') return;
+    const allQuartiers = Object.values(YAONDE_QUARTIERS).flatMap(z => z.quartiers);
+    allQuartiers.sort((a, b) => a.localeCompare(b, 'fr'));
+    allQuartiers.forEach(q => {
+        const option = document.createElement('option');
+        option.value = q;
+        datalist.appendChild(option);
+    });
+});
+</script>
+<script>
+window.captureOrder = function() {
+    if (typeof showNotification === 'function') {
+        showNotification('Capture en cours...', 'info');
+    }
+
+    // 1. Remonter tout en haut
+    window.scrollTo(0, 0);
+
+    // 2. Sauvegarder le style du header fixe
+    const header = document.querySelector('header');
+    const headerOriginalPosition = header ? header.style.position : null;
+    const headerOriginalTop = header ? header.style.top : null;
+
+    // 3. Transformer le header en position relative pour qu'il soit inclus dans le flux
+    if (header) {
+        header.style.position = 'relative';
+        header.style.top = 'auto';
+    }
+
+    // 4. Calculer la hauteur totale réelle de la page
+    const fullHeight = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+    );
+
+    // 5. Lancer la capture sur document.body
+    html2canvas(document.body, {
+        scale: 1.5,
+        backgroundColor: '#ffffff',
+        logging: false,
+        allowTaint: false,
+        useCORS: true,
+        scrollX: 0,
+        scrollY: 0,
+        x: 0,
+        y: 0,
+        width: document.documentElement.scrollWidth,
+        height: fullHeight,
+        windowWidth: document.documentElement.scrollWidth,
+        windowHeight: fullHeight
+    }).then(canvas => {
+        // 6. Restaurer le header
+        if (header) {
+            header.style.position = headerOriginalPosition;
+            header.style.top = headerOriginalTop;
+        }
+
+        // 7. Télécharger l'image
+        const link = document.createElement('a');
+        link.download = `sipamo-commande-${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    }).catch(error => {
+        // Restaurer même en cas d'erreur
+        if (header) {
+            header.style.position = headerOriginalPosition;
+            header.style.top = headerOriginalTop;
+        }
+        console.error('Erreur de capture :', error);
+        if (typeof showNotification === 'function') {
+            showNotification('Erreur lors de la capture.', 'error');
+        }
+    });
+};
+</script>
+
+<script>
+// ============================================================
+// MODE LIVRAISON / RETRAIT — VERSION CORRIGÉE
+// ============================================================
+const deliveryModeRadios = document.querySelectorAll('input[name="deliveryMode"]');
+
+function toggleDeliveryFields() {
+    const isDelivery = document.querySelector('input[name="deliveryMode"]:checked').value === 'delivery';
+
+    // Ville : visible en livraison seulement
+    const cityEl = document.getElementById('c-city');
+    const cityGroup = cityEl ? cityEl.closest('.input-group') : null;
+    if (cityGroup) cityGroup.style.display = isDelivery ? 'block' : 'none';
+    if (cityEl) cityEl.required = isDelivery;
+
+    if (isDelivery) {
+        // Quartier + rue : entièrement gérés par handleCityChange() selon la ville choisie
+        if (typeof window.handleCityChange === 'function') window.handleCityChange();
+    } else {
+        // Retrait : masquer quartier ET rue inconditionnellement, quelle que soit la ville
+        const qg = document.getElementById('yaonde-quartier-group');
+        const sg = document.getElementById('yaonde-street-group');
+        if (qg) { qg.classList.remove('show'); qg.style.display = 'none'; }
+        if (sg) { sg.classList.remove('show'); sg.style.display = 'none'; }
+        const q = document.getElementById('c-quartier');
+        const s = document.getElementById('c-street');
+        if (q) q.removeAttribute('required');
+        if (s) s.removeAttribute('required');
+    }
+
+    // Heure : toujours visible, libellé adapté au mode
+    const timeSelect = document.getElementById('c-delivery-time');
+    const timeLabelEl = document.getElementById('c-delivery-time-label');
+    if (timeLabelEl) timeLabelEl.textContent = isDelivery
+        ? 'Heure de Livraison (Plage : 7h - 18h) *'
+        : 'Heure de Retrait (Plage : 7h - 18h) *';
+    if (timeSelect) timeSelect.required = true;
+
+    // Date : libellé adapté, réinitialisée si mode change
+    const dateInput = document.getElementById('c-delivery-date');
+    const dateLabelEl = document.getElementById('c-delivery-date-label');
+    if (dateLabelEl) dateLabelEl.textContent = isDelivery ? 'Date de Livraison *' : 'Date de Retrait *';
+    if (dateInput) {
+        dateInput.value = '';
+        dateInput.disabled = true;       // toujours désactivé
+        dateInput.style.background = '#f5f5f5';
+        dateInput.style.cursor = 'not-allowed';
+        dateInput.style.color = '#aaa';
+    }
+    const hint = document.getElementById('c-delivery-date-hint');
+    if (hint) {
+        hint.style.color = '#999';
+        hint.style.fontStyle = 'italic';
+        hint.textContent = '\u23F3 Sélectionnez d\'abord une heure pour voir la date disponible.';
+    }
+
+    if (typeof window.updateDeliveryFee === 'function') window.updateDeliveryFee();
+    if (typeof window.updateGrandTotal === 'function') window.updateGrandTotal();
+    updateConditions();
+}
+
+// Écouter le choix d'heure pour auto-remplir la date
+document.addEventListener('DOMContentLoaded', function() {
+    const timeSelect = document.getElementById('c-delivery-time');
+    const dateInput = document.getElementById('c-delivery-date');
+    const hint = document.getElementById('c-delivery-date-hint');
+    const isDelivery = () => document.querySelector('input[name="deliveryMode"]:checked').value === 'delivery';
+
+    if (timeSelect && dateInput) {
+        timeSelect.addEventListener('change', function() {
+          if (!this.value) {
+            dateInput.value = '';
+            dateInput.style.background = '#f5f5f5';
+            dateInput.style.cursor = 'not-allowed';
+            dateInput.style.color = '#aaa';
+            if (hint) {
+              hint.style.color = '#999';
+              hint.style.fontStyle = 'italic';
+              hint.textContent = '\u23F3 Sélectionnez d\'abord une heure pour voir la date disponible.';
+            }
+            return;
+          }
+          const dateStr = getEarliestDeliveryDate(this.value);
+          dateInput.value = dateStr;
+          dateInput.style.background = '#fff';
+          dateInput.style.cursor = 'default';
+          dateInput.style.color = '#333';
+          if (hint) {
+            const [y, m, d] = dateStr.split('-');
+            const dateObj = new Date(+y, +m - 1, +d);
+            const jours = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+            const moisNoms = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+            const label = isDelivery() ? 'livraison' : 'retrait';
+            hint.style.color = '#2e7d32';
+            hint.style.fontStyle = 'normal';
+            hint.textContent = `\u2705 Date de ${label} fixée au ${jours[dateObj.getDay()]} ${+d} ${moisNoms[dateObj.getMonth()]} ${y}.`;
+          }
+        });
+    }
+});
+
+function updateConditions() {
+    const mode = document.querySelector('input[name="deliveryMode"]:checked').value;
+    const city = document.getElementById('c-city').value;
+    const container = document.getElementById('delivery-conditions');
+    if (!container) return;
+    if (mode === 'pickup') {
+        container.innerHTML = `<strong>Retrait à Total Melen (Yaoundé)</strong><br>
+        Vous pouvez venir chercher votre commande à l'adresse qui vous sera communiquée après confirmation.<br>
+        Paiement sur place (espèces, Mobile Money). Aucuns frais de livraison.`;
+    } else if (city === 'Yaoundé') {
+        container.innerHTML = `<strong>Livraison à Yaoundé</strong><br>
+        Frais de livraison : à régler avant l'envoi du livreur.<br>
+        Paiement des articles à la réception (espèces, Mobile Money).<br>
+        <span class="warning">Les frais de livraison ne sont pas remboursables.</span>`;
+    } else if (city) {
+        container.innerHTML = `<strong>Livraison hors Yaoundé</strong><br>
+        Paiement intégral (articles + frais de livraison) par Mobile Money à la commande.<br>
+        Après réception du paiement, nous expédions via agence de transport.`;
+    } else {
+        container.innerHTML = '';
+    }
+}
+
+deliveryModeRadios.forEach(radio => radio.addEventListener('change', toggleDeliveryFields));
+toggleDeliveryFields();
+
+// La ville appelle déjà handleCityChange() via onchange HTML — on ajoute juste updateConditions
+const citySelect = document.getElementById('c-city');
+if (citySelect) citySelect.addEventListener('change', updateConditions);
+</script>
+</body>
+</html>

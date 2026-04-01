@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À Propos | SIPAMO - L'Excellence du Sur-Mesure</title>
+    <meta name="description" content="Découvrez l'histoire de SIPAMO, marque de mode camerounaise alliant tradition et modernité. Qualité, élégance et prix accessibles à Yaoundé.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.sipamo.site/en-savoir-plus.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="À Propos | SIPAMO">
+    <meta property="og:description" content="L'histoire de SIPAMO, marque de mode à Yaoundé : qualité, élégance et sur-mesure à petit prix.">
+    <meta property="og:url" content="https://www.sipamo.site/en-savoir-plus.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sipamo.site/favicon-512.png">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --font-main: 'Jost', sans-serif;
+      --font-cond: 'Montserrat', sans-serif; /* Nouvelle police pour les conditions */
+      --color-black: #1a1a1a;
+      --color-grey: #666;
+      --border: 1px solid #eee;
+    }
+
+    body { 
+      font-family: var(--font-main); 
+      margin: 0; 
+      line-height: 1.8; 
+      color: var(--color-black); 
+      background: #fff;
+    }
+
+    /* Navigation */
+    .nav-simple { 
+      padding: 30px; 
+      text-align: center; 
+      border-bottom: var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.92);
+      z-index: 100;
+    }
+    .nav-simple a { 
+      text-decoration: none; 
+      color: #000; 
+      font-size: 11px; 
+      text-transform: uppercase; 
+      letter-spacing: 2px;
+      font-weight: 400;
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+
+    /* En-tête */
+    header { text-align: center; margin-bottom: 80px; }
+    h1 { font-weight: 300; font-size: 36px; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; }
+    .subtitle { color: var(--color-grey); font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
+
+    /* Sections Générales */
+    section { margin-bottom: 80px; }
+    
+    /* Titres standard H2 */
+    h2 { 
+      font-weight: 400; 
+      font-size: 18px; 
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      border-bottom: 1px solid #000; 
+      display: inline-block; 
+      margin-bottom: 25px; 
+      padding-bottom: 5px;
+    }
+    p { font-weight: 300; color: #444; font-size: 16px; margin-bottom: 20px; }
+
+    /* Bloc Savoir-Faire (Existant) */
+    .highlight-box { 
+      background: #fafafa; 
+      padding: 40px; 
+      border-radius: 4px; 
+      margin: 40px 0;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .info-item h3 { font-size: 14px; text-transform: uppercase; margin-bottom: 10px; }
+    .info-item p { font-size: 14px; color: #777; }
+
+    /* =========================================
+       NOUVEAU STYLE POUR LA SECTION CONDITIONS
+       (Style Magazine / Image fournie)
+       ========================================= */
+    #conditions {
+        font-family: var(--font-cond); /* Utilise Montserrat */
+        color: #555;
+    }
+
+    /* Le titre style "Image" */
+    .cond-title {
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 400;
+        color: #222;
+        border-bottom: 1px solid #222;
+        display: inline-block;
+        padding-bottom: 10px;
+        margin-bottom: 50px;
+    }
+
+    /* La Grille : 3 colonnes égales */
+    .cond-grid {
+        display: grid;
+        /* Force 3 colonnes de taille égale sur grand écran */
+        grid-template-columns: 1fr 1fr 1fr; 
+        gap: 40px; 
+        text-align: left;
+    }
+
+    /* Sous-titres (H4) */
+    .cond-col h4 {
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+        margin-top: 0;
+    }
+
+    /* Listes propres */
+    .cond-col ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .cond-col li {
+        margin-bottom: 15px;
+        font-size: 10px;
+        line-height: 1.7;
+        font-weight: 300;
+    }
+
+    /* Mots clés en gras */
+    .highlight {
+        font-weight: 600;
+        color: #333;
+        display: block; 
+        margin-bottom: 2px;
+    }
+
+    /* Boite Sérénité */
+    .serenite-box {
+        margin-top: 20px;
+        font-size: 10px;
+        font-style: italic;
+        color: #777;
+        background: #f4f4f4;
+        padding: 15px;
+        border-radius: 2px;
+    }
+
+    .footer-note {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 12px;
+        color: #999;
+        border-top: 1px solid #ddd;
+        padding-top: 20px;
+    }
+
+    /* Responsive pour conditions */
+    @media (max-width: 768px) {
+        .cond-grid {
+            grid-template-columns: 1fr 1fr 1fr; /* 1 seule colonne sur mobile */
+            gap: 10px;
+        }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 18px; }
+      .container { padding: 30px 20px; }
+    }
+
+    /* Juridique */
+    .legal-footer { 
+      margin-top: 100px; 
+      padding-top: 40px; 
+      border-top: var(--border); 
+      font-size: 12px; 
+      color: #999;
+    }
+    .legal-footer strong { color: #555; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav-simple">
+    <a href="index.html">← Retour à la boutique</a>
+  </nav>
+
+  <div class="container">
+    <header>
+      <span class="subtitle">L'Histoire derrière chaque couture</span>
+      <h1>L'Esprit SIPAMO</h1>
+    </header>
+
+    <section>
+      <h2>Notre Vision</h2>
+      <p>
+        SIPAMO est née d'une ambition simple : redéfinir l'élégance contemporaine au Cameroun. Nous croyons que le vêtement est le prolongement de la personnalité. C'est pourquoi nous fusionnons les techniques de coupe traditionnelles avec un design moderne et minimaliste.
+      </p>
+    </section>
+
+    <section class="highlight-box">
+      <h2>Savoir-Faire & Production</h2>
+      <p>
+        Chaque vêtement SIPAMO est conçu localement. Nous ne faisons pas de production de masse industrielle. Nous privilégions la <strong>"Slow Fashion"</strong> :
+      </p>
+      <div class="info-grid">
+        <div class="info-item">
+          <h3>La Coupe</h3>
+          <p>Réalisée à la main pour garantir une symétrie parfaite et un tombé impeccable.</p>
+        </div>
+        <div class="info-item">
+          <h3>Les Matières</h3>
+          <p>Sélection rigoureuse de cotons, lins et tissus techniques adaptés au climat tropical.</p>
+        </div>
+        <div class="info-item">
+          <h3>Les Artisans</h3>
+          <p>Nos tailleurs cumulent des années d'expérience dans la haute couture masculine et féminine.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Transparence Humaine</h2>
+      <p>
+        Derrière SIPAMO se trouve une équipe dévouée. De nos maîtres tailleurs qui manient les ciseaux avec précision à nos conseillers clients qui assurent le suivi de vos mesures sur WhatsApp, chaque employé partage une valeur commune : <strong>l'obsession du détail.</strong>
+      </p>
+      <p>
+        Notre atelier principal est situé à <strong>Nsimalen, Yaoundé</strong>, un lieu de création où nous accueillons également nos clients pour des prises de mesures personnalisées.
+      </p>
+    </section>
+
+    <section id="conditions">
+        <div class="cond-title">Conditions Générales</div>
+        
+        <div class="cond-grid">
+          <div class="cond-col">
+            <h4>1. Expédition et Livraison</h4>
+            <ul>
+                <li>
+                    <span class="highlight">À Yaoundé</span> 
+                    Entre 500 F et 1 000 F CFA (jusqu'à 2 000 F en zone périphérique).
+                </li>
+                <li>
+                    <span class="highlight">Hors Yaoundé</span> 
+                    Paiement intégral requis à la commande (Article + Frais d'agence).
+                </li>
+            </ul>
+            <div class="serenite-box">
+                <b>Sérénité :</b> En cas de perte confirmée par l'agence, SIPAMO renvoie votre article gratuitement.
+            </div>
+          </div>
+    
+          <div class="cond-col">
+            <h4>2. Retours et Remboursements</h4>
+            <ul>
+                <li>
+                    <span class="highlight">Politique de vente</span> 
+                    Articles ni repris, ni échangés (sauf erreur de notre part).
+                </li>
+                <li>
+                    <span class="highlight">Défaut de fabrication</span> 
+                    Remboursement possible sous 7 jours si l'article est intact et non porté.
+                </li>
+                <li>
+                    <span class="highlight">Dommages transport</span> 
+                    Si l'article arrive abîmé, nous prenons en charge le retour et la confection d'un neuf.
+                </li>
+            </ul>
+          </div>
+    
+          <div class="cond-col">
+            <h4>3. Modalités de Paiement</h4>
+            <ul>
+                <li>
+                    <span class="highlight">Validation</span> 
+                    Délai de confirmation de 48 heures après la commande.
+                </li>
+                <li>
+                    <span class="highlight">Retard</span> 
+                    Une pénalité de 10% s'applique après 5 jours de retard.
+                </li>
+                <li>
+                    <span class="highlight">Propriété</span> 
+                    Les articles restent la propriété de SIPAMO jusqu'au paiement complet.
+                </li>
+            </ul>
+          </div>
+        </div>
+    
+        <p class="footer-note">Merci de votre confiance. En passant commande, vous acceptez l'ensemble de ces conditions.</p>
+    </section>
+
+    <section class="legal-footer" id="legal">
+      <h2>Informations Légales</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+        <div>
+          <strong>Raison Sociale</strong><br>
+          SIPAMO SARL<br><br>
+          <strong>Siège Social</strong><br>
+          Mélen, Yaoundé<br>
+          Cameroun
+        </div>
+
+        <div>
+          <strong>Immatriculation</strong><br>
+          NIU: M092518071045E<br>
+          RCCM: CM-NSI-01-2025-B13-01359<br>
+          <br>
+          <strong>Contact Client</strong><br>
+          contact@sipamo.site<br>
+          +237 620 412 921
+        </div>
+
+        <div>
+          <strong>Hébergement Web</strong><br>
+          LWS (Ligne Web Services)<br>
+          10 rue Penthièvre, 75008 Paris<br>
+        </div>
+      </div>
+    </section>
+  
+  </div> <footer style="text-align: center; padding: 40px; color: #ccc; font-size: 11px; letter-spacing: 1px; border-top: 1px solid #fafafa;">
+    &copy; 2026 SIPAMO | Made in CAMEROON
+  </footer>
+</body>
+</html>
